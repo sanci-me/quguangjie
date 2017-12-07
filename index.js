@@ -11,7 +11,7 @@ const huoshanParser = require('./src/huoshan-parser')
 const tmallParser = require('./src/tmall-parser')
 const youzanParser = require('./src/youzan-parser')
 const toutiaoParser = require('./src/toutiao-parser')
-const api = require('./api')
+const api = require('./api-new')
 
 function getParser (url) {
     if (url.indexOf('https://detail.tmall.com') >= 0) {
