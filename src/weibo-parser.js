@@ -50,7 +50,8 @@ async function parse(url) {
     return {
         title: content.title,
         content: content.content + imgStr,
-        video: content.video
+        video: content.video,
+        videopic: content.videopic
     }
 }
 

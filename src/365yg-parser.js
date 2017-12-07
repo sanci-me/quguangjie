@@ -84,7 +84,8 @@ async function parse (url) {
     return {
         title: videoInfo.title,
         content: '',
-        video: data
+        video: data,
+        videopic: ''
     }
 }
 
