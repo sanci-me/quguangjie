@@ -58,24 +58,20 @@ let processList = []
 
 async function loadData () {
     const rs = await api.getList()
-    processList = rs.data
+    processList = rs.data || []
 }
 
 async function saveData (data) {
     return await api.save(data)
 }
 
-async function getSourceUrl (articleId) {
-    return await api.getSourceUrl(articleId)
-}
-
-async function process () {
+async function run () {
     const data = processList.shift()
     if (!data) {
         console.info('[schedule] start to load data from api')
         await loadData()
     } else {
-        const url = data.sourceurl // await getSourceUrl(data.articleID)
+        const url = data.sourceurl
         console.info('[schedule] start to parse url ' + url + ', article id = ' + data.articleID)
         try {
             const rs = await parse(url)
@@ -97,7 +93,7 @@ async function process () {
         }
     }
     console.info('[schedule] schedule to next url ')
-    setTimeout(process, 5e3)
+    setTimeout(run, 5e3)
 }
 
-process()
+run()

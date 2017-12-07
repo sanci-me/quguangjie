@@ -1,41 +1,25 @@
 "use strict";
 
 const request = require('request')
-const key = '$()_FOR_cchao_**'
+const key = process.env.apiKey
+const getUrl =  process.env.getUrl + key
+const saveUrl = process.env.saveUrl
 
 module.exports = {
     getList () {
         return new Promise((resolve, reject) => {
             request({
-                url: 'https://pailekeji.com/inrouter/article/list?offset=0&key=' + key,
+                url: getUrl,
                 json: true
             }, function (error, httpResponse, body) {
                 resolve(body)
             })
         })
     },
-    getSourceUrl (articleId) {
-        return new Promise((resolve, reject) => {
-            request.post({
-                url: 'https://pailekeji.com/article/detailapi',
-                json: true,
-                form: {
-                    token: 'MjE3NDM3JDEzNTI3NDcyNTQwXzdmZDc4ZDYyYTE3ZGZhZTdhNWJkYjM0YjE4NWFkYmZm',
-                    id: articleId
-                }
-            }, function (error, httpResponse, body) {
-                if (error) {
-                    reject(error)
-                } else {
-                    resolve(body.data.sourceurl)
-                }
-            })
-        })
-    },
     save (data) {
         return new Promise((resolve, reject) => {
             request({
-                url: 'https://pailekeji.com/inrouter/article/save',
+                url: saveUrl,
                 method: 'POST',
                 json: true,
                 form: {
