@@ -1,9 +1,9 @@
 "use strict";
 
 const request = require('request')
-const key = process.env.apiKey
-const getUrl =  process.env.getUrl + key
-const saveUrl = process.env.saveUrl
+const key = process.env.quguangjie_apiKey
+const getUrl =  process.env.quguangjie_getUrl + key
+const saveUrl = process.env.quguangjie_saveUrl
 
 module.exports = {
     getList () {
