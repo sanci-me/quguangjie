@@ -1,0 +1,14 @@
+{
+  "apps": [
+    {
+      "name": "quguangjie-article-spider-server",
+      "script": "./index.js",
+      "watch": false,
+      "node_args": "--harmony",
+      "merge_logs": false,
+      "cwd": "./",
+      "instances": 1,
+      "exec_mode": "cluster"
+    }
+  ]
+}
