@@ -24,11 +24,16 @@ async function parse(url) {
                 ? data.page_info.media_info.stream_url
                 : ''
             : ''
+        let videopic = ''
+        if (videoEl) {
+            videopic = data.page_info.page_pic.url
+        }
         return {
             title: data.status_title,
             content: '<p>' + contentStr.replace(/<a\b[^>]*>(.*?)<\/a>/gi,"").replace(/^(\n)?\s+/g, '') + '</p>',
             imgs: imgs,
-            video: videoEl.replace(/\?.+/, '')
+            video: videoEl.replace(/\?.+/, ''),
+            videopic: videopic
         }
     });
 

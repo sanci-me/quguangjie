@@ -51,11 +51,17 @@ async function parse(url) {
         };
         const contentStr = document.querySelectorAll('.detail-description')[0].innerText
         const videoSrc = decodeMp4.decode(document.querySelectorAll('#detailVideo')[0].getAttribute('data-video'))
+        function getCoverImg () {
+            const metas = Array.from(document.head.getElementsByTagName('meta'))
+            const cover = metas.find(i => i.getAttribute('property') === 'og:image')
+            return cover.getAttribute('content')
+        }
         return {
             title: document.title.replace(/ \- .*/, ''),
             content: '<p>' + contentStr.replace(/<a\b[^>]*>(.*?)<\/a>/gi,"").replace(/^(\n)?\s+/g, '') + '</p>',
             imgs: [],
-            video: videoSrc.replace(/\?.+/, '')
+            video: videoSrc.replace(/\?.+/, ''),
+            videopic: getCoverImg()
         }
     })
 

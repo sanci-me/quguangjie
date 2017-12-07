@@ -21,7 +21,8 @@ async function parse(url) {
             title: document.title.replace(/\-淘宝网/, ''),
             content: '',
             imgs: [],
-            video: document.querySelectorAll('.tm-video-box video.lib-video')[0].src
+            video: document.querySelectorAll('.tm-video-box video.lib-video')[0].src,
+            videopic: document.querySelectorAll('.tm-video-box video.lib-video')[0].poster
         }
     });
 

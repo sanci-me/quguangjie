@@ -20,7 +20,8 @@ async function parse(url) {
             title: document.title,
             content: '',
             imgs: [],
-            video: document.querySelectorAll('.player-container')[0].getAttribute('data-src')
+            video: document.querySelectorAll('.player-container')[0].getAttribute('data-src'),
+            videopic: document.querySelectorAll('.poster-image')[0].src,
         }
     });
 

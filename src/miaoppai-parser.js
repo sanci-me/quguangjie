@@ -1,5 +1,7 @@
 "use strict";
 
+// 'http://www.miaopai.com/show/bK4ijTC9PPvefS-coZbeMysZfjQT-KuqpPfLuA__.htm'
+
 const puppeteer = require('puppeteer');
 
 async function parse(url) {
@@ -19,7 +21,8 @@ async function parse(url) {
             title: document.title.replace(/\-[^-]*的秒拍/, ''),
             content: '<p>' + contentStr.replace(/<a\b[^>]*>(.*?)<\/a>/gi,"").replace(/^(\n)?\s+/g, '') + '</p>',
             imgs: [],
-            video: videoEl.src.replace(/\?.+/, '')
+            video: videoEl.src.replace(/\?.+/, ''),
+            videopic: videoEl.poster
         }
     });
 

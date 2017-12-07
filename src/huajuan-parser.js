@@ -24,7 +24,8 @@ async function parse(url) {
     return {
         title: data.video.video_title,
         content: '',
-        video: data.video.video_url
+        video: data.video.video_url,
+        videopic: data.vide.image_url
     }
 }
 
