@@ -7,7 +7,8 @@ const log = console.log
 
 async function parse(url) {
     const browser = await puppeteer.launch({
-        headless: true
+        headless: true,
+        args: ["--no-sandbox","--disable-setuid-sandbox"]
     });
     const page = await browser.newPage()
 
