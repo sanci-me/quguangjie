@@ -32,7 +32,7 @@ async function parse(url) {
             const actionData = document.querySelectorAll('.WB_feed_detail li.WB_video')[0].getAttribute('action-data')
             const imgData = actionData.split('&').find(item => item.indexOf('cover_img') === 0)
             const coverImg = imgData.split('=')[1]
-            videopic = 'https:' + decodeURIComponent(coverImg)
+            videopic = decodeURIComponent(coverImg)
         } catch (e) {}
 
         return {

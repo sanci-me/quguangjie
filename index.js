@@ -82,6 +82,7 @@ async function run () {
                 articleid: data.articleID,
                 content: rs.content,
                 videourl: rs.video,
+                videopic: rs.videopic,
                 title: rs.title,
                 author: rs.author
             })
