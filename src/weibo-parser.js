@@ -8,6 +8,11 @@ async function parse(url) {
         args: ["--no-sandbox","--disable-setuid-sandbox"]
     });
     const page = await browser.newPage()
+    page.on('error', (err) => {
+        console.error('error occured, page crashed');
+        console.error(err)
+        browser.close()
+    })
 
     await page.goto(url)
     await page.waitForSelector('.WB_feed_detail');
