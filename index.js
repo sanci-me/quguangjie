@@ -11,13 +11,17 @@ const huoshanParser = require('./src/huoshan-parser')
 const tmallParser = require('./src/tmall-parser')
 const youzanParser = require('./src/youzan-parser')
 const toutiaoParser = require('./src/toutiao-parser')
+const weiboTTArticleParser = require('./src/weibo-ttarticle-parser')
 const api = require('./api-new')
 
 function getParser (url) {
     if (url.indexOf('https://detail.tmall.com') >= 0) {
         return tmallParser(url)
     }
-    if (url.indexOf('https://weibo.com/') >= 0) {
+    if (url.indexOf('weibo.com/ttarticle/') > 0) {
+        return weiboTTArticleParser(url)
+    }
+    if (url.indexOf('https://weibo.com/') >= 0 || url.indexOf('http://weibo.com/') >= 0) {
         return weiboParser(url)
     }
     if (url.indexOf('http://m.huajuanmall.com') >= 0) {
