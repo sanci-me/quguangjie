@@ -12,6 +12,7 @@ async function parse(url) {
         console.error('error occured, page crashed');
         console.error(err)
         browser.close()
+        process.exit()
     })
 
     await page.goto(url);

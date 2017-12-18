@@ -15,10 +15,17 @@ async function parse(url) {
         console.error('error occured, page crashed');
         console.error(err)
         browser.close()
+        process.exit()
     })
 
     await page.goto(url)
-    await page.waitForSelector('.player-container');
+    await page.waitForSelector('.player-container')
+        .catch(err => {
+            console.error('error occured, page timeout')
+            console.error(err)
+            browser.close()
+            process.exit()
+        })
 
     const content = await page.evaluate(() => {
         return {
